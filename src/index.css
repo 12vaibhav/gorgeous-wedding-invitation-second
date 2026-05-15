@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wedding-maroon: #800020;
+  --color-wedding-gold: #D4AF77;
+  --color-wedding-ivory: #F5F0E8;
+  --color-wedding-blush: #E8C7C8;
+  --color-wedding-saffron: #FF9933;
+  --color-wedding-dark: #1a1a1a;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-script: "Great Vibes", cursive;
+
+  --background-image-gold-gradient: linear-gradient(to right, #B38728, #FBF5B7, #FDDA5F, #FBF5B7, #B38728);
+}
+
+@utility text-gold-gradient {
+  background: linear-gradient(to right, #B38728, #FBF5B7, #FDDA5F, #FBF5B7, #B38728);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--color-wedding-ivory);
+}
