@@ -1,39 +1,39 @@
 import { useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Heart, Calendar, MapPin, Clock, Music, Phone, Mail, ArrowDown, Camera } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence, Variants } from 'framer-motion';
+import { Heart, Calendar, MapPin, Clock, Music, Mail, Camera } from 'lucide-react';
 
 // ─── Reusable Animation Variants ───────────────────────────────────────────
-const fadeUp = {
+const fadeUp: Variants = {
   hidden:  { opacity: 0, y: 50 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] } }),
+  visible: (i: any = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
-const fadeDown = {
+const fadeDown: Variants = {
   hidden:  { opacity: 0, y: -40 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.12, ease: 'easeOut' } }),
+  visible: (i: any = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.12, ease: 'easeOut' } }),
 };
-const fadeLeft = {
+const fadeLeft: Variants = {
   hidden:  { opacity: 0, x: -60 },
-  visible: (i = 0) => ({ opacity: 1, x: 0, transition: { duration: 0.8, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }),
+  visible: (i: any = 0) => ({ opacity: 1, x: 0, transition: { duration: 0.8, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
-const fadeRight = {
+const fadeRight: Variants = {
   hidden:  { opacity: 0, x: 60 },
-  visible: (i = 0) => ({ opacity: 1, x: 0, transition: { duration: 0.8, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }),
+  visible: (i: any = 0) => ({ opacity: 1, x: 0, transition: { duration: 0.8, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
-const scaleIn = {
+const scaleIn: Variants = {
   hidden:  { opacity: 0, scale: 0.75 },
-  visible: (i = 0) => ({ opacity: 1, scale: 1, transition: { duration: 0.7, delay: i * 0.1, ease: [0.34, 1.56, 0.64, 1] } }),
+  visible: (i: any = 0) => ({ opacity: 1, scale: 1, transition: { duration: 0.7, delay: i * 0.1, ease: [0.34, 1.56, 0.64, 1] } }),
 };
-const flipIn = {
+const flipIn: Variants = {
   hidden:  { opacity: 0, rotateX: -30, y: 30 },
-  visible: (i = 0) => ({ opacity: 1, rotateX: 0, y: 0, transition: { duration: 0.8, delay: i * 0.15, ease: 'easeOut' } }),
+  visible: (i: any = 0) => ({ opacity: 1, rotateX: 0, y: 0, transition: { duration: 0.8, delay: i * 0.15, ease: 'easeOut' } }),
 };
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden:  {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
-const shimmerReveal = {
+const shimmerReveal: Variants = {
   hidden:  { opacity: 0, scaleX: 0, originX: 0 },
-  visible: (i = 0) => ({ opacity: 1, scaleX: 1, transition: { duration: 0.9, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }),
+  visible: (i: any = 0) => ({ opacity: 1, scaleX: 1, transition: { duration: 0.9, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
 
 // Viewport config used everywhere for consistent trigger point
@@ -57,40 +57,7 @@ const IMAGES = {
   ]
 };
 
-const SectionHeading = ({ title, subtitle }: { title: string, subtitle?: string }) => (
-  <div className="text-center mb-16">
-    {subtitle && (
-      <motion.p 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="font-script text-3xl md:text-4xl text-wedding-gold mb-2"
-      >
-        {subtitle}
-      </motion.p>
-    )}
-    <motion.h2 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1 }}
-      className="font-serif text-4xl md:text-5xl lg:text-6xl text-wedding-maroon uppercase tracking-widest"
-    >
-      {title}
-    </motion.h2>
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2 }}
-      className="mt-6 flex items-center justify-center gap-4"
-    >
-      <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-wedding-gold to-transparent"></div>
-      <Heart className="w-4 h-4 text-wedding-gold fill-current" />
-      <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-wedding-gold to-transparent"></div>
-    </motion.div>
-  </div>
-);
+
 
 const GoldParticles = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
