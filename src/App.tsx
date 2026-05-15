@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence, Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
 import { Heart, Calendar, MapPin, Clock, Music, Mail, Camera } from 'lucide-react';
 
 // ─── Reusable Animation Variants ───────────────────────────────────────────
@@ -1244,7 +1244,6 @@ function App() {
               // Alternate frame styles like in the reference
               const isWooden = i % 3 === 0;
               const isGold = i % 3 === 1;
-              const isPolaroid = i % 3 === 2;
               const frameGradient = isWooden
                 ? "from-[#8B5E3C] via-[#A0724A] to-[#6B4226]"
                 : isGold
